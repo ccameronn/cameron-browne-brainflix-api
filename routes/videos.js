@@ -10,7 +10,6 @@ const rawData = fs.readFileSync(videoDataFilePath);
 const videos =  JSON.parse(rawData);
 
 
-
 // ROUTES
 router.get('/', (req,res) => {
     res.send(videos);
