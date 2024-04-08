@@ -19,7 +19,11 @@ router.get('/', (req,res) => {
 router.get('/:id', (req,res) => {
     const videoId = req.params.id;
     const videoDetails = videos.find((video) => videoId == video.id)
-    res.send(videoDetails);
+    if (videoDetails) {
+        res.send(videoDetails);
+    } else {
+        res.send("No video with that id exists");
+    }
 })
 
 
