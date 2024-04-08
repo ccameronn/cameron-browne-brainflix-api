@@ -12,7 +12,7 @@ const videos =  JSON.parse(rawData);
 
 // ROUTES
 router.get('/', (req,res) => {
-    res.send(videos);
+    res.status(200).send(videos);
 })
 
 
@@ -20,9 +20,9 @@ router.get('/:id', (req,res) => {
     const videoId = req.params.id;
     const videoDetails = videos.find((video) => videoId == video.id)
     if (videoDetails) {
-        res.send(videoDetails);
+        res.status(200).send(videoDetails);
     } else {
-        res.send("No video with that id exists");
+        res.status(404).send("No video with that id exists");
     }
 })
 
@@ -51,7 +51,7 @@ router.post('/', (req, res) => {
     fs.writeFileSync(videoDataFilePath, JSON.stringify(newVideosData));
 
 
-    res.json(newVideo);
+    res.status(200).json(newVideo);
 })
 
   
