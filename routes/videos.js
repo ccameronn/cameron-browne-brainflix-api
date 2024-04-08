@@ -12,7 +12,12 @@ const videos =  JSON.parse(rawData);
 
 // ROUTES
 router.get('/', (req,res) => {
-    res.status(200).send(videos);
+
+    const reducedVideos = videos.map((video) => {
+        let outputVideoObject = {"id": video.id, "title": video.title, "channel": video.channel, "image": video.image};
+        return outputVideoObject;
+    });
+    res.status(200).send(reducedVideos);
 })
 
 
